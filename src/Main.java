@@ -15,6 +15,9 @@ public class Main {
 
         // -------------------------
         Scanner a = new Scanner(System.in);
+
+        int b = 1;
+        
         int key;
         do { 
             System.out.println("=========================MENU============================");
