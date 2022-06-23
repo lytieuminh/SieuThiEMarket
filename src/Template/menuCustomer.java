@@ -29,8 +29,8 @@ public class menuCustomer {
                     break;
                 }
             }
-        } while (key != 0);
-        System.out.println(" kết thúc");
+        } while (key != 5);
+
     }
 
     public void displayOptions(LogginAccountController logginAccountController) {

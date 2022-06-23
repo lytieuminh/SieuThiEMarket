@@ -14,7 +14,7 @@ import Controller.LogginAccountController;
 public class BootStrap {
 
     static JsonArray list = new JsonArray();
-
+    
     public static void main(String[] args) {
         chooseOptions();
     }
@@ -58,6 +58,7 @@ public class BootStrap {
                     
                 }
             }
+
         } while (key != 0);
     }
 
