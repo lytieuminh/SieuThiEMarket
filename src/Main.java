@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import Template.menuClient;
+// import Template.menuClient;
 import Template.menuCustomer;
 import Config.accountConfig;
 
@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         accountConfig accountConfig = new accountConfig();
-        menuClient menuClient = new menuClient();
+        // menuClient menuClient = new menuClient();
         menuCustomer menuCustomer = new menuCustomer();
 
         // 1 is client 2 is customer
@@ -30,9 +30,9 @@ public class Main {
                 case 1: 
                     // Day la vi du ve role
                     if (role == 1) {
-                        menuClient.renderUI(a);
+                        // menuClient.renderUI(a);
                     } else if (role == 2) {
-                        menuCustomer.renderUI(a);
+                        // menuCustomer.renderUI(a);
                     }
                     // --------------------
                     break;

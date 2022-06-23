@@ -1,0 +1,30 @@
+[
+    {
+        "un": "phuoc gau",
+        "ps": 12346,
+        "tel": "0969696969",
+        "role": "NV",
+        "address": "n/a"
+    },
+    {
+        "un": "tran dan",
+        "ps": 741258,
+        "tel": "0321123456",
+        "role": "KH",
+        "address": "Dong Da"
+    },
+    {
+        "un": "ngoc trinh",
+        "ps": 21046,
+        "tel": "0879789987",
+        "role": "KH",
+        "address": "Quan 1"
+    },
+    {
+        "un": "huan rose",
+        "ps": 369258,
+        "tel": "0654546465",
+        "role": "NV",
+        "address": "n/a"
+    }
+]

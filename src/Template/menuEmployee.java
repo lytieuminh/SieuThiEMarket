@@ -2,10 +2,10 @@ package Template;
 
 import java.util.Scanner;
 
-public class menuCustomer {
+public class menuEmployee {
+
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
-
         int key;
         do {
             displayOptions(logginAccountController);
@@ -27,7 +27,7 @@ public class menuCustomer {
                     break;
                 }
                 case 0: {
-                    return;
+                    break;
                 }
             }
         } while (key != 0);
@@ -35,12 +35,12 @@ public class menuCustomer {
     }
 
     public void displayOptions(LogginAccountController logginAccountController) {
-        if (logginAccountController.getCustomer().checkLoggedIn()) {
+        if (logginAccountController.getEmployee().checkLoggedIn()) {
             System.out.println("=========================MENU============================");
-            System.out.println(">>1. mua hàng                                            ");
-            System.out.println(">>2. xem lịch sử mua hàng                                ");
-            System.out.println(">>3. theo dõi tiến trình hàng hóa                        ");
-            System.out.println(">>4. Tra cứu hàng hóa                                    ");
+            System.out.println(">>1. thêm sửa xóa hàng hóa                               ");
+            System.out.println(">>2. xác nhận mua hàng cho khách                         ");
+            System.out.println(">>3. xác nhận đăng ký khách hàng thân thiết cho khách    ");
+            System.out.println(">>4. thống kê                                            ");
             System.out.println(">>5. Đăng xuất                                           ");
             System.out.println("=========================================================");
         } else {
@@ -48,4 +48,5 @@ public class menuCustomer {
         }
 
     }
+
 }
