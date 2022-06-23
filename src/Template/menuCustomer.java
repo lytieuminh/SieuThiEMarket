@@ -2,7 +2,7 @@ package Template;
 
 import java.util.Scanner;
 
-import Model.LogginAccountController;
+import Controller.LogginAccountController;
 
 public class menuCustomer {
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
@@ -27,9 +27,6 @@ public class menuCustomer {
                 case 5: {
                     loggedInAccountUI.handleInputLI(key);
                     break;
-                }
-                case 0: {
-                    return;
                 }
             }
         } while (key != 0);

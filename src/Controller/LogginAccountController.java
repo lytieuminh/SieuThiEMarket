@@ -1,7 +1,11 @@
-package Model;
+package Controller;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import Model.Account;
+import Model.Customer;
+import Model.Employee;
 
 public class LogginAccountController {
     // attributes

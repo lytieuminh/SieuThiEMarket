@@ -8,7 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import Model.LogginAccountController;
+import Controller.CreateAccountController;
+import Controller.LogginAccountController;
 
 public class BootStrap {
 
@@ -27,7 +28,7 @@ public class BootStrap {
         LogginAccountController logginAccountController = new LogginAccountController();
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
 
-        System.out.println("Welcome to the eMarket System!!\n(To exit type 'esc')");
+        System.out.println("Welcome to the eMarket System!!");
 
         int key;
         do {
@@ -53,12 +54,9 @@ public class BootStrap {
                     createAccountUI.handleCAInputs();
                     break;
                 }
-                case 0: {
-                    System.out.println("kết thúc");
-                    break;
+                case 3: {
+                    
                 }
-                default:
-                    break;
             }
         } while (key != 0);
     }
