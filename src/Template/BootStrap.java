@@ -8,12 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import Template.CreateAccountController;
-import Template.CreateAccountUI;
-import Template.LoggedInAccountUI;
-import Template.LogginAccountController;
-import Template.menuCustomer;
-import Template.menuEmployee;
+import Model.LogginAccountController;
 
 public class BootStrap {
 

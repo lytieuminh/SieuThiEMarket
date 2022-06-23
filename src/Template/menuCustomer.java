@@ -2,6 +2,8 @@ package Template;
 
 import java.util.Scanner;
 
+import Model.LogginAccountController;
+
 public class menuCustomer {
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
