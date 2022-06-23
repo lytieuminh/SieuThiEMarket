@@ -30,13 +30,33 @@ public class BootStrap {
 
         System.out.println("Welcome to the eMarket System!!");
 
-        int key;
+        int key = -1;
         do {
             System.out.println(getPrompt(logginAccountController)); // show loggin account name
-            displayOptions(logginAccountController, scanner); // show menu options
+            displayOptions(logginAccountController, scanner, key); // show menu options
 
-            System.out.print("Chọn chức năng: ");
-            key = scanner.nextInt();
+            menuCustomer menuCustomer = new menuCustomer();
+            menuEmployee menuEmployee = new menuEmployee();
+    
+            // check login
+            if (!logginAccountController.getCustomer().checkLoggedIn()
+                    && !logginAccountController.getEmployee().checkLoggedIn()) {
+                System.out.println("=========================MENU============================");
+                System.out.println(">>0. Kết thúc                                            ");
+                System.out.println(">>1. Đăng nhập                                           ");
+                System.out.println(">>2. Đăng kí                                             ");
+                System.out.println(">>3. Tra cứu hàng hóa                                    ");
+                System.out.println("=========================================================");
+                System.out.print("Chọn chức năng: ");
+                key = scanner.nextInt();
+            } else if (logginAccountController.getCustomer().checkLoggedIn()
+                    && logginAccountController.getAccountRole().equals("KH")) {
+                menuCustomer.renderUI(logginAccountController, scanner);
+                key = -1;
+            } else {
+                menuEmployee.renderUI(logginAccountController, scanner);
+                key = -1;
+            }
             // scanner.nextLine();
 
             String requireMsg; // user guide
@@ -62,25 +82,8 @@ public class BootStrap {
         } while (key != 0);
     }
 
-    public static void displayOptions(LogginAccountController logginAccountController, Scanner scanner) {
-        menuCustomer menuCustomer = new menuCustomer();
-        menuEmployee menuEmployee = new menuEmployee();
-
-        // check login
-        if (!logginAccountController.getCustomer().checkLoggedIn()
-                && !logginAccountController.getEmployee().checkLoggedIn()) {
-            System.out.println("=========================MENU============================");
-            System.out.println(">>0. Kết thúc                                            ");
-            System.out.println(">>1. Đăng nhập                                           ");
-            System.out.println(">>2. Đăng kí                                             ");
-            System.out.println(">>3. Tra cứu hàng hóa                                    ");
-            System.out.println("=========================================================");
-        } else if (logginAccountController.getCustomer().checkLoggedIn()
-                && logginAccountController.getAccountRole().equals("KH")) {
-            menuCustomer.renderUI(logginAccountController, scanner);
-        } else {
-            menuEmployee.renderUI(logginAccountController, scanner);
-        }
+    public static void displayOptions(LogginAccountController logginAccountController, Scanner scanner,int key) {
+        
 
     }
 

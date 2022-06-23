@@ -31,7 +31,7 @@ public class menuEmployee {
                     break;
                 }
             }
-        } while (key != 0);
+        } while (key != 5);
         System.out.println(" kết thúc");
     }
 
