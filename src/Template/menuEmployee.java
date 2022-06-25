@@ -2,9 +2,13 @@ package Template;
 
 import java.util.Scanner;
 
+import Controller.LogginAccountController;
+
 public class menuEmployee {
 
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
+        menuThemSuaXoa menuThemSuaXoa = new menuThemSuaXoa();
+        menuThongKe menuThongKe = new menuThongKe();
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
         int key;
         do {
@@ -14,23 +18,20 @@ public class menuEmployee {
             key = a.nextInt();
             a.nextLine();
             switch (key) {
-                case 1:
+                case 1: menuThemSuaXoa.renderUI(a);
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
-                case 4:
+                case 4: menuThongKe.renderUI(a);
                     break;
                 case 5: {
                     loggedInAccountUI.handleInputLI(key);
                     break;
                 }
-                case 0: {
-                    break;
-                }
             }
-        } while (key != 0);
+        } while (key != 5);
         System.out.println(" kết thúc");
     }
 

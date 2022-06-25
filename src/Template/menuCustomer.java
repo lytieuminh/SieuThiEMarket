@@ -2,6 +2,8 @@ package Template;
 
 import java.util.Scanner;
 
+import Controller.LogginAccountController;
+
 public class menuCustomer {
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
@@ -35,8 +37,8 @@ public class menuCustomer {
                     return;
                 }
             }
-        } while (key != 0);
-        System.out.println(" kết thúc");
+        } while (key != 5);
+
     }
 
     public void displayOptions(LogginAccountController logginAccountController) {
