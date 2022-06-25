@@ -7,6 +7,7 @@ import Controller.LogginAccountController;
 public class menuCustomer {
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
+        ChangePasswordUI changePasswordUI = new ChangePasswordUI(logginAccountController);
 
         int key;
         do {
@@ -28,6 +29,13 @@ public class menuCustomer {
                     loggedInAccountUI.handleInputLI(key);
                     break;
                 }
+                case 6: {
+                    changePasswordUI.handleCPInputs(logginAccountController, key);
+                    break;
+                }
+                case 0: {
+                    return;
+                }
             }
         } while (key != 5);
 
@@ -41,6 +49,7 @@ public class menuCustomer {
             System.out.println(">>3. theo dõi tiến trình hàng hóa                        ");
             System.out.println(">>4. Tra cứu hàng hóa                                    ");
             System.out.println(">>5. Đăng xuất                                           ");
+            System.out.println(">>6. Đổi mật khẩu                                        ");
             System.out.println("=========================================================");
         } else {
             BootStrap.chooseOptions();

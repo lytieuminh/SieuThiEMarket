@@ -1,12 +1,8 @@
 package Template;
 
-import java.io.FileWriter;
-// import java.io.FileWriter;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import Controller.CreateAccountController;
 import Controller.LogginAccountController;
