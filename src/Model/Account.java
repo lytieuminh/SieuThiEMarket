@@ -3,8 +3,9 @@ package Model;
 public abstract class Account {
     // dependenci storeFile
     protected static StoredFiles accounts = new StoredFiles("accounts.json");
+    
     // attribute
-    protected String userName;
+    protected String username;
     protected Integer password;
     protected String tel;
     protected String role;
@@ -14,11 +15,11 @@ public abstract class Account {
     // getter setter
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public Integer getPassword() {
@@ -43,15 +44,15 @@ public abstract class Account {
 
     // constructor
     public Account() {
-        this.userName = null;
+        this.username = null;
         this.password = null;
         this.tel = null;
         this.role = null;
         this.loggedIn = false;
     }
 
-    public Account(String userName, Integer password, String tel, String role) {
-        this.userName = userName;
+    public Account(String username, Integer password, String tel, String role) {
+        this.username = username;
         this.password = password;
         this.tel = tel;
         this.role = role;
@@ -65,7 +66,7 @@ public abstract class Account {
     }
 
     public void logout() {
-        this.userName = null;
+        this.username = null;
         this.password = null;
         this.tel = null;
         this.role = null;

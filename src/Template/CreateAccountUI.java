@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import Controller.CreateAccountController;
 import Model.Account;
-import Model.Customer;
+import Model.Custumer;
 import Model.Employee;
 
 public class CreateAccountUI {
@@ -54,7 +54,7 @@ public class CreateAccountUI {
         System.out.print("Address: ");
         String address = scanner.nextLine();
 
-        return new Customer(userName, password, tel, "KH", address);
+        return new Custumer(userName, password, tel, "KH", address);
     }
 
     // xử lý input của user
@@ -63,7 +63,7 @@ public class CreateAccountUI {
             Account account = creatAccountInputs();
             // đưa cho controller xử lí và tạo account
             if (account.getRole().equalsIgnoreCase("KH")) {
-                Customer customer = (Customer) account;
+                Custumer customer = (Custumer) account;
                 this.createAccountController.creatAccount(customer.getUserName(),
                         customer.getPassword(), customer.getTel(),
                         customer.getRole(), customer.getAddress());

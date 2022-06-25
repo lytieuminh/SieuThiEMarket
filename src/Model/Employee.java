@@ -8,13 +8,13 @@ public class Employee extends Account {
 
     }
 
-    public Employee(String userName, Integer password, String tel, String role) {
-        super(userName, password, tel, role);
+    public Employee(String username, Integer password, String tel, String role) {
+        super(username, password, tel, role);
     }
 
     // methods
     public void setAccountEmployee(String username, int password, String tel, String role) {
-        this.userName = username;
+        this.username = username;
         this.password = password;
         this.tel = tel;
         this.role = role;

@@ -2,13 +2,34 @@ package Template;
 
 import java.util.Scanner;
 
+import Config.Actions;
+import Controller.CreateOrderController;
 import Controller.LogginAccountController;
+import Controller.PurchaseHistoryController;
+import Controller.TrackOrderController;
+import Model.Custumer;
+import Model.HangHoa;
+import Model.Order;
 
 public class menuCustomer {
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
+        HangHoa hanghoaObj = new HangHoa();
+        Order orderObj = new Order();
+        Custumer custumer = new Custumer();
+
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
         ChangePasswordUI changePasswordUI = new ChangePasswordUI(logginAccountController);
 
+        CreateOrderController createOrderController = new CreateOrderController(hanghoaObj);
+        CreateOrderUI createOrderUI = new CreateOrderUI(createOrderController);
+
+        TrackOrderController trackOrderController = new TrackOrderController(orderObj);
+        TrackOrderUI trackOrderUI = new TrackOrderUI(trackOrderController);
+
+        PurchaseHistoryController purchaseHistoryController = new PurchaseHistoryController(custumer);
+        PurchaseHistoryUI purchaseHistoryUI = new PurchaseHistoryUI(purchaseHistoryController);
+
+        String rep = null;
         int key;
         do {
             displayOptions(logginAccountController);
@@ -18,12 +39,28 @@ public class menuCustomer {
             a.nextLine();
             switch (key) {
                 case 1:
+                    rep = Actions.MH.toString();
+
+                    System.out.println(createOrderUI.handleCommands(rep));
+
+                    System.out.println(createOrderUI.handleInputs()); 
                     break;
                 case 2:
+                    rep = Actions.LSMH.toString();
+                    
+                    System.out.println(purchaseHistoryUI.handleCommand(rep)); 
+
+                    System.out.println(purchaseHistoryUI.handleInput());
                     break;
                 case 3:
+                    rep = Actions.TDDH.toString();
+
+                    System.out.println(trackOrderUI.handleCommand(rep));
+
+                    System.out.println(trackOrderUI.handleInput());
                     break;
                 case 4:
+                    //trash
                     break;
                 case 5: {
                     loggedInAccountUI.handleInputLI(key);

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Account;
-import Model.Customer;
+import Model.Custumer;
 import Model.Employee;
 
 public class CreateAccountController {
     // attribute
-    private Customer customer;
+    private Custumer customer;
     private Employee employee;
 
     // getter setter
-    public Customer getCustomer() {
+    public Custumer getCustomer() {
         return customer;
     }
 
@@ -24,7 +24,7 @@ public class CreateAccountController {
     // constructor
     public CreateAccountController() {
         this.employee = new Employee();
-        this.customer = new Customer();
+        this.customer = new Custumer();
     }
 
     // methods

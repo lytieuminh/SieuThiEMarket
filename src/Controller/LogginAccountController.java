@@ -4,18 +4,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import Model.Account;
-import Model.Customer;
+import Model.Custumer;
 import Model.Employee;
 
 public class LogginAccountController {
     // attributes
-    private Customer customer;
+    private Custumer customer;
     private Employee employee;
 
     private String accountRole;
 
     // getter
-    public Customer getCustomer() {
+    public Custumer getCustomer() {
         return customer;
     }
 
@@ -29,7 +29,7 @@ public class LogginAccountController {
 
     // constructor
     public LogginAccountController() {
-        this.customer = new Customer();
+        this.customer = new Custumer();
         this.employee = new Employee();
     }
 

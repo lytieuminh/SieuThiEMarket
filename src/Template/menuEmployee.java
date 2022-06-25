@@ -2,15 +2,30 @@ package Template;
 
 import java.util.Scanner;
 
+import Config.Actions;
+import Controller.ConfirmOrderController;
+import Controller.ConfirmTypeEmployController;
 import Controller.LogginAccountController;
+import Model.Order;
 
 public class menuEmployee {
 
     public void renderUI(LogginAccountController logginAccountController, Scanner a) {
+        Order orderObj = new Order();
+
         menuThemSuaXoa menuThemSuaXoa = new menuThemSuaXoa();
         menuThongKe menuThongKe = new menuThongKe();
         LoggedInAccountUI loggedInAccountUI = new LoggedInAccountUI(logginAccountController);
+
+        ConfirmOrderController confirmOrderController = new ConfirmOrderController(orderObj);
+        ConfirmOrderUI confirmOrderUI = new ConfirmOrderUI(confirmOrderController);
+
+        ConfirmTypeEmployController confirmTypeEmployController = new ConfirmTypeEmployController(orderObj);
+        ConfirmTypeEmployUI confirmTypeEmployUI = new ConfirmTypeEmployUI(confirmTypeEmployController);
+
         int key;
+        String rep = null;
+
         do {
             displayOptions(logginAccountController);
 
@@ -21,10 +36,21 @@ public class menuEmployee {
                 case 1: menuThemSuaXoa.renderUI(a);
                     break;
                 case 2:
+                    rep = Actions.XNDH.toString();
+
+                    System.out.println(confirmOrderUI.handleCommands(rep));
+
+                    System.out.println(confirmOrderUI.handleInput());
                     break;
                 case 3:
+                    rep = Actions.XNKHTT.toString();
+
+                    System.out.println(confirmTypeEmployUI.handleCommand(rep));
+
+                    System.out.println(confirmTypeEmployUI.handleInput());
                     break;
-                case 4: menuThongKe.renderUI(a);
+                case 4: 
+                    menuThongKe.renderUI(a);
                     break;
                 case 5: {
                     loggedInAccountUI.handleInputLI(key);
