@@ -32,7 +32,7 @@ public class Customer extends Account {
     }
 
     public void setAccountCustomer(String userName, Integer password, String tel, String role, String address) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.tel = tel;
         this.role = role;
