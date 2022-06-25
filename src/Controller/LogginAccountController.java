@@ -50,11 +50,11 @@ public class LogginAccountController {
             if (role.equals("KH")) {
                 this.accountRole = role;
                 if (pass == password) {
-                    String tel = jsonObjectAccount.get("tel").getAsString();
+                   String tel = jsonObjectAccount.get("tel").getAsString();
                     String address = jsonObjectAccount.get("address").getAsString();
 
                     this.customer.setAccountCustomer(username, password, tel, role, address);
-                    System.out.println("[LOGGED IN] You are logged in.\n");
+                    System.out.println("[LOGGED  IN] You are logged in.\n");
                 } else {
                     System.out.println("[WRONG PASSWORD] The password you enterd is incorrect!!!");
                 }

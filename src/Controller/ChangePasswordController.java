@@ -1,10 +1,9 @@
-package Template;
+package Controller;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import Model.Account;
-import Controller.LogginAccountController;
 
 public class ChangePasswordController {
     // methods
