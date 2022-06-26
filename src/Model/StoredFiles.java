@@ -254,8 +254,10 @@ public class StoredFiles {
         int size = list.size();
         Object[] stringArray = list.toArray(new Object[size]);
         
+        int count = 0;
         for (Object object : stringArray) {
-            System.out.print(object + "\n");
+            System.out.print("orderId " + count + ": " + object + "\n");
+            count ++;
         }
     }
 
