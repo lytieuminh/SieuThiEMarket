@@ -11,15 +11,12 @@ public class ConfirmOrderController {
 
     public void ConfirmOrder(int idOrder){
 
-
-        //Check dang nhap (Nhan vien) if/else
-
         Order.getOrder().setValue("State", "Dang giao", idOrder);
         Order.getOrder().write();
     }
 
-    public void displayOrders(){
-        Order.getOrder().toArray();
+    public void displayOrder(){
+        Order.getOrder().toArray_A();
     }
 
     public int getSize(){

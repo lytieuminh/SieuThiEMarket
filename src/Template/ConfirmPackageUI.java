@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import Config.Actions;
 import Controller.ConfirmPackageController;
+import Controller.LogginAccountController;
 import Model.Custumer;
 import Model.Order;
 
@@ -23,17 +24,23 @@ public class ConfirmPackageUI {
         this.command = null;
     }
 
-    public List<Object> ConfirmPackage(){
+    public List<Object> ConfirmPackage(LogginAccountController logginAccountController){
         List<Object> list = new ArrayList<>();
 
-        confirmPackageController.displayOrderInfo();
+        String nameCustumer = logginAccountController.getCustomer().getUserName();
+        
+        System.out.println("[HINT] Insert -1 to return to menu");
 
         System.out.print("[SYSTEM] Choose ID order: ");
         int orderID = input.nextInt();
 
         String cmd = null;
 
-        if(confirmPackageController.checkCustumer(orderID)){
+        if(orderID == -1){
+            return list;
+        }
+
+        if(confirmPackageController.checkCustumer(nameCustumer)){
             System.out.print("\n[SYSTEM] Confirm you received the package: ");
             cmd = input.next();
         } else {
@@ -52,28 +59,47 @@ public class ConfirmPackageUI {
         this.command = Actions.valueOf(cmd);
 
         if(this.command.equals(Actions.XNDG)){
-            return "[SYSTEM] Choose YES or No";
+            return "--------------Confirm package sections--------------";
         } else {
             return "[SYSTEM] Unknown command";
         }
     }
 
-    public String handleInput(){
+    public String handleInput(LogginAccountController logginAccountController){
 
         String returnStr = null;
+        String nameCustumer = logginAccountController.getCustomer().getUserName();
 
         List<Object> list = new ArrayList<>();
 
-        list = ConfirmPackage();
+        
+        list = ConfirmPackage(logginAccountController);
+
+        if(list.isEmpty() || list == null){
+            return "[SYSTEM] BACK TO MENU";
+        }
 
         int orderID = (Integer) list.get(0);
-
         String cmd = String.valueOf(list.get(1));
+
+        String stateOrder = confirmPackageController.getStateOrder(orderID);
+
+        if(stateOrder == null){
+            return "[SYSTEM] State Error";
+        }
+
+        if(stateOrder.equalsIgnoreCase("Cho xac nhan")){
+            return returnStr = "[SYSTEM] Your order has not been confirmed by Employees";
+        }
 
         if(cmd.equalsIgnoreCase("YES")) {
             confirmPackageController.ConfirmOrder(orderID);
 
             returnStr = "[SYSTEM] You confirmed package";
+
+            String nameOrder = confirmPackageController.getNameOrder(orderID);
+
+            confirmPackageController.addPHistory(nameCustumer, orderID, nameOrder);
 
             System.out.println(confirmType(orderID));
         } else if(cmd.equalsIgnoreCase("NO")) {

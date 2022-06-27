@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Config.Actions;
 import Controller.ConfirmOrderController;
 import Controller.HangHoaController;
+import Controller.LogginAccountController;
 import Model.Order;
 
 public class ConfirmOrderUI {
@@ -21,7 +22,9 @@ public class ConfirmOrderUI {
         this.command = null;
     }
 
-    public int ConfirmInput(){
+    public int ConfirmInput(LogginAccountController logginAccountController){
+                
+        confirmOrderController.displayOrder();
 
         System.out.print("[SYSTEM] Order's ID: ");
         int orderID = input.nextInt();
@@ -53,8 +56,6 @@ public class ConfirmOrderUI {
     public String handleCommands(String reply){
         String cmd = reply.toUpperCase();
         
-        confirmOrderController.displayOrders();
-        
         this.command = Actions.valueOf(cmd);
         if(this.command.equals(Actions.XNDH)){
             return "[SYSTEM] Choose an ID to vertify";
@@ -63,8 +64,8 @@ public class ConfirmOrderUI {
         }
     }
 
-    public String handleInput(){
-        int orderID = ConfirmInput();
+    public String handleInput(LogginAccountController logginAccountController){
+        int orderID = ConfirmInput(logginAccountController);
 
         String returnValue = null;
 
@@ -76,9 +77,5 @@ public class ConfirmOrderUI {
         }
 
         return returnValue;
-    }
-
-    public void displayOrders(){
-        confirmOrderController.displayOrders();
     }
 }

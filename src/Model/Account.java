@@ -73,14 +73,14 @@ public abstract class Account {
         this.loggedIn = false;
     }
 
-    // public void setAccount(String username, int password, String tel, String
-    // role) {
-    // this.userName = username;
-    // this.password = password;
-    // this.tel = tel;
-    // this.role = role;
-    // this.loggedIn = true;
-    // }
+    public void setAccount(String username, int password, String tel, String
+    role) {
+    this.username = username;
+    this.password = password;
+    this.tel = tel;
+    this.role = role;
+    this.loggedIn = true;
+    }
 
     public static StoredFiles getAccount() {
         return accounts;

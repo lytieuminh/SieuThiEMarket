@@ -1,36 +1,29 @@
 package Template;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import Config.Actions;
+import Controller.ConfirmPackageController;
+import Controller.LogginAccountController;
 import Controller.PurchaseHistoryController;
 import Model.Custumer;
+import Model.Order;
 
 public class PurchaseHistoryUI {
     private Custumer custumer;
+    private Order order;
     private Actions command;
-    private static Scanner input = new Scanner(System.in);
 
     PurchaseHistoryController purchaseHistoryController = new PurchaseHistoryController(custumer);
+    ConfirmPackageController confirmPackageController = new ConfirmPackageController(custumer, order);
 
     public PurchaseHistoryUI(PurchaseHistoryController purchaseHistoryController){
         this.purchaseHistoryController = purchaseHistoryController;
         this.command = null;
     }
 
-    public List<String> showPHistoryInput(){
-        List<String> listPHistory = new ArrayList<>();
+    public Boolean showPHistoryInput(LogginAccountController logginAccountController){
+        String name = logginAccountController.getCustomer().getUserName();
 
-        System.out.print("[TEMPORARY] Insert name: ");
-        String name = input.next();
-
-        listPHistory = purchaseHistoryController.getPHistory(name);
-        
-        listPHistory.add(name);
-
-        return listPHistory;
+        return purchaseHistoryController.displayOrderInfo(name);
     }
 
     public String handleCommand(String reply){
@@ -38,23 +31,18 @@ public class PurchaseHistoryUI {
 
         this.command = Actions.valueOf(cmd);
         if(this.command.equals(Actions.LSMH)){
-            return "[SYSTEM] Enter name";
+            return "[SYSTEM] Purchased History";
         } else {
             return "[SYSTEM] Unknown command";
         }
     }
 
-    public String handleInput(){
-        List<String> listPHistory = new ArrayList<>();
+    public String handleInput(LogginAccountController logginAccountController){
 
-        listPHistory = showPHistoryInput();
-
-        if(listPHistory.get(0).equals("NO PRODUCT FOUND")){
-            return "[SYSTEM] " + listPHistory.get(1).toString() +  "'s Purchased History is empty";
-        } else if(listPHistory.get(0) == "NO CUSTUMER FOUND"){
-            return "[SYSTEM] " + listPHistory.get(1).toString() + " is not on the system";
+        if(showPHistoryInput(logginAccountController)){
+            return "[SYSTEM] YOUR ORDER IS PRINTED";
         } else {
-            return listPHistory.get(0).toString();
+            return "[SYSTEM] You do not have any order";
         }
     }
 }

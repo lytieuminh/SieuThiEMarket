@@ -65,5 +65,11 @@ public class Order extends HangHoa{
         return "Cho xac nhan";
     }
 
-
+    public void setOrder(int id, String name, Double price, String owner, String deliveryAddress){
+        this.idHangHoa = id;
+        this.nameHangHoa = name;
+        this.priceHangHoa = price;
+        this.owner = owner;
+        this.deliveryAddress = deliveryAddress;
+    }
 }

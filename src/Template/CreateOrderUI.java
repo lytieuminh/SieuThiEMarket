@@ -7,6 +7,9 @@ import java.util.Scanner;
 import Config.Actions;
 import Controller.CreateOrderController;
 import Controller.HangHoaController;
+import Controller.LogginAccountController;
+import Model.Account;
+import Model.Custumer;
 import Model.HangHoa;
 import Model.Order;
 
@@ -15,6 +18,9 @@ public class CreateOrderUI {
     private CreateOrderController orderController;
     private Actions command;
     private HangHoa hanghoa;
+    private Order order;
+    private Custumer custumer;
+    private Account account;
 
     private HangHoaController hangHoaController = new HangHoaController(hanghoa);
     
@@ -25,7 +31,9 @@ public class CreateOrderUI {
 
     private int datHangInput(){
 
-        System.out.print("[SYSTEM] Item's ID: ");
+        hangHoaController.getAllHangHoa();
+        
+        System.out.print("[SYSTEM] Item's index: ");
         int purchaseID = input.nextInt();
 
         if(checkMemorySize(purchaseID)){
@@ -55,8 +63,6 @@ public class CreateOrderUI {
     public String handleCommands(String reply){
         String cmd = reply.toUpperCase();
 
-        hangHoaController.getAllHangHoa();
-
         this.command = Actions.valueOf(cmd);
         if(this.command.equals(Actions.MH)){
             return "[SYSTEM] | Please enter your choice |";
@@ -65,7 +71,7 @@ public class CreateOrderUI {
         }
     }
 
-    public String handleInputs(){
+    public String handleInputs(LogginAccountController logginAccountController){
         List<Object> list = new ArrayList<>();
 
         int purchaseID = datHangInput();
@@ -98,9 +104,15 @@ public class CreateOrderUI {
 
         if(this.command.equals(Actions.MH)){
             if(idHangHoa != -1 || nameHangHoa != null || priceHangHoa != -1.0){
-                Order newOrder = new Order(idHangHoa, nameHangHoa, priceHangHoa, "Hao", "XXX Quan 6");
-            //Them bien Owner - deliveryAddress của Custumer
+                String owner = logginAccountController.getCustomer().getUserName();
+
+                String deliveryAddress = logginAccountController.getCustomer().getAddress();
+
+                Order newOrder = new Order(idHangHoa, nameHangHoa, priceHangHoa, owner, deliveryAddress);
+
                 orderController.CreateNewOrder(newOrder);
+
+                int index = orderController.getIndex("ID", idHangHoa);
 
                 returnValue = "[SYSTEM] | Your order have been created |";
             } else {

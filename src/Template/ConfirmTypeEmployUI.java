@@ -22,7 +22,8 @@ public class ConfirmTypeEmployUI {
     public boolean confirmType(){
 
         confirmTypeEmployController.displayPreCus();
-        System.out.print("[SYSTEM] Insert: ");
+        
+        System.out.print("[SYSTEM] Insert a name: ");
         String repName = input.next();
         
         if(confirmTypeEmployController.confirmType(repName)){

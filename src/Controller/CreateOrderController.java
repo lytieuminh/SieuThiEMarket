@@ -19,11 +19,25 @@ public class CreateOrderController {
         
     }
 
+    public void displayOrders(){
+        Order.getOrder().toArray_A();
+    }
+
     public int getSize(){
         return HangHoa.getHanghoas().getMemorySize();
     }
     
     public String getValue(String key, int index){
         return HangHoa.getHanghoas().searchStr(key, index);
+    }
+
+    public int getIndex(String key, int id){
+        return Order.getOrder().searchIndex("ID", id);
+    }
+
+    public void removeIndex(int index){
+        HangHoa.getHanghoas().remove(index);
+
+        HangHoa.getHanghoas().write();
     }
 }

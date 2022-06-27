@@ -10,6 +10,6 @@ public class HangHoaController {
     }
 
     public void getAllHangHoa(){
-        HangHoa.getHanghoas().toArray();
+        HangHoa.getHanghoas().toArray_A();
     }
 }

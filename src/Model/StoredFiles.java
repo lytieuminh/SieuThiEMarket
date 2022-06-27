@@ -57,6 +57,9 @@ public class StoredFiles {
 
         int nameInt = -1;
         for (int i = 0; i < memory.size(); i++) {
+            if(value == -1){
+                break;
+            }
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             
             nameInt = jsonObject.get(key).getAsInt();
@@ -85,9 +88,9 @@ public class StoredFiles {
         return index;
     }
 
-    public List<String> searchIndexList(String key, String value) { //Tim kiem theo Key va Value(String) - Tra ve index neu tim duoc Value(String)
+    public List<Integer> searchIndexList(String key, String value) { //Tim kiem theo Key va Value(String) - Tra ve index neu tim duoc Value(String)
 
-        List<String> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
         int index = -1;
 
@@ -97,7 +100,7 @@ public class StoredFiles {
             
             nameString = jsonObject.get(key).getAsString();
             if (value.equalsIgnoreCase(nameString)) {
-                list.add("i");
+                list.add(i);
             }
         }
         return list;
@@ -139,6 +142,10 @@ public class StoredFiles {
 
         String nameString = null;
         for (int i = 0; i < memory.size(); i++) {
+            if(index == -1){
+                break;
+            }
+            
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
 
             //Dang can kiem tra xem PHistory = null hay khong? Khong lay duoc value neu value = null
@@ -207,11 +214,10 @@ public class StoredFiles {
         memory.add(jsonObject);
     }
 
-    public void update(String name, String address, int amount,String type, String purchasedProduct) {
+    public void update(String name, String address,String type, String purchasedProduct) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("Name", name);
         jsonObject.addProperty("Address", address);
-        jsonObject.addProperty("Money", amount);
         jsonObject.addProperty("Type", type);
         jsonObject.addProperty("Purchased Product", purchasedProduct);
     
@@ -244,11 +250,22 @@ public class StoredFiles {
         return this.memory;
     }
 
-    public void toArray(){ //Tra ve tat ca cac gia tri trong File json
+    public boolean toArray_B(String nameCustumer){ //Tra ve tat ca cac gia tri trong File json
         
         List<Object> list=  new ArrayList<>();
+
         for (int i = 0; i < memory.size(); i++) {
-            list.add(memory.get(i));            
+            JsonObject jsonObject = memory.get(i).getAsJsonObject();
+            String nameStr = jsonObject.get("Owner").getAsString();
+            String stateStr = jsonObject.get("State").getAsString();
+
+            if(!stateStr.equalsIgnoreCase("Dang giao")){
+                if(nameStr.equalsIgnoreCase(nameCustumer)){
+                    list.add(memory.get(i));   
+                }
+            } else {
+                return false;
+            }
         }
 
         int size = list.size();
@@ -257,6 +274,73 @@ public class StoredFiles {
         int count = 0;
         for (Object object : stringArray) {
             System.out.print("orderId " + count + ": " + object + "\n");
+            count ++;
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean toArray(String nameCustumer){ //Tra ve tat ca cac gia tri trong File json
+        
+        Boolean returnValue = false;
+
+        List<Object> list=  new ArrayList<>();
+
+        for (int i = 0; i < memory.size(); i++) {
+            JsonObject jsonObject = memory.get(i).getAsJsonObject();
+            String nameStr = jsonObject.get("Owner").getAsString();
+
+            if(nameStr.equalsIgnoreCase(nameCustumer)){
+                list.add(memory.get(i));   
+            }
+        }
+
+        int size = list.size();
+        Object[] stringArray = list.toArray(new Object[size]);
+        
+        int count = 0;
+        for (Object object : stringArray) {
+            System.out.print("orderId " + count + ": " + object + "\n");
+            count ++;
+            returnValue = true;
+        }
+
+        return returnValue;
+    }
+
+    
+
+    public void toArray_A(){ //Tra ve tat ca cac gia tri trong File json
+        
+        List<Object> list=  new ArrayList<>();
+        for (int i = 0; i < memory.size(); i++) {
+                list.add(memory.get(i));   
+        }
+
+        int size = list.size();
+        Object[] stringArray = list.toArray(new Object[size]);
+        
+        int count = 0;
+        for (Object object : stringArray) {
+            System.out.print("orderId " + count + ": " + object + "\n");
+            count ++;
+        }
+    }
+
+    public void toArray(){ //Tra ve tat ca cac gia tri trong File json
+        
+        List<Object> list=  new ArrayList<>();
+        for (int i = 0; i < memory.size(); i++) {
+                list.add(memory.get(i));   
+        }
+
+        int size = list.size();
+        Object[] stringArray = list.toArray(new Object[size]);
+        
+        int count = 0;
+        for (Object object : stringArray) {
+            System.out.print(object + "\n");
             count ++;
         }
     }
@@ -302,11 +386,29 @@ public class StoredFiles {
         }
     }
 
+    public String addValue(String key, String value, int index, String addValue){
+
+        String nameStr = null;
+
+        for(int i = 0; i < memory.size(); i++){
+            JsonObject jsonObject = memory.get(i).getAsJsonObject();
+
+            nameStr = jsonObject.get(key).getAsString();
+
+            if(i == index){
+                nameStr = nameStr + " + " + addValue;
+                break;
+            }
+        }
+
+        return nameStr;
+    }
+
     public int getMemorySize(){
         return memory.size();
     }
 
-    public void remove(int index){
+    public void remove(int index){  
         memory.remove(index);
     }
 }
