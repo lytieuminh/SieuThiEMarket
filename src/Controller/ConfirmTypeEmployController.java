@@ -15,6 +15,8 @@ public class ConfirmTypeEmployController {
 
         int index = Custumer.getCustumers().searchIndex("Name", nameCustumer);
 
+        int indexPre = Custumer.getCustumers().searchIndex("Name", nameCustumer);
+
         if(index == -1){
             return false;
         } else {
@@ -22,7 +24,7 @@ public class ConfirmTypeEmployController {
 
             Custumer.getCustumers().write();
 
-            PremiumCustumer.getPreCustumer().remove(index);
+            PremiumCustumer.getPreCustumer().remove(indexPre);
             return true;
         }
     }
