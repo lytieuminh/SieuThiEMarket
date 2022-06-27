@@ -120,9 +120,10 @@ public class ConfirmPackageUI {
             return "[SYSTEM] Thank you for using our services";
         }
 
-        //Lay thong tin Custumer tu dong 88
         if(cmd.toUpperCase().equals("YES")){
-            if(confirmPackageController.confirmType_KH("Hao")){
+            String nameCustumer = Order.getOrder().searchStr("Owner", orderID);
+
+            if(confirmPackageController.confirmType_KH(nameCustumer)){
                 return "[SYSTEM] Thanks you for register."; 
             } else {
                 return "[SYSTEM] Thank you for using our services";
