@@ -285,24 +285,27 @@ public class StoredFiles {
         
         Boolean returnValue = false;
 
-        List<Object> list=  new ArrayList<>();
+        List<Object> listOrder =  new ArrayList<>();
+
+        List<Integer> listIndex = new ArrayList<>();
 
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             String nameStr = jsonObject.get("Owner").getAsString();
 
             if(nameStr.equalsIgnoreCase(nameCustumer)){
-                list.add(memory.get(i));   
+                listOrder.add(memory.get(i));
+                listIndex.add(i);
             }
-        }
 
-        int size = list.size();
-        Object[] stringArray = list.toArray(new Object[size]);
+        }
+        int index = 0;
+        int size = listOrder.size();
+        Object[] stringArray = listOrder.toArray(new Object[size]);
         
-        int count = 0;
         for (Object object : stringArray) {
-            System.out.print("orderId " + count + ": " + object + "\n");
-            count ++;
+            System.out.print("orderId " + listIndex.get(index) + ": " + object + "\n");
+            index ++;
             returnValue = true;
         }
 

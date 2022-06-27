@@ -65,7 +65,7 @@ public class menuEmployee {
         if (logginAccountController.getEmployee().checkLoggedIn()) {
             System.out.println("=========================MENU============================");
             System.out.println(">>1. thêm sửa xóa hàng hóa                               ");
-            System.out.println(">>2. xác nhận mua hàng cho khách                         ");
+            System.out.println(">>2. xác nhận đơn hàng cho khách                         ");
             System.out.println(">>3. xác nhận đăng ký khách hàng thân thiết cho khách    ");
             System.out.println(">>4. thống kê                                            ");
             System.out.println(">>5. Đăng xuất                                           ");

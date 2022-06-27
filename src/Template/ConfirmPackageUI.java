@@ -71,7 +71,6 @@ public class ConfirmPackageUI {
         String nameCustumer = logginAccountController.getCustomer().getUserName();
 
         List<Object> list = new ArrayList<>();
-
         
         list = ConfirmPackage(logginAccountController);
 

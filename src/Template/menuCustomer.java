@@ -95,7 +95,7 @@ public class menuCustomer {
             System.out.println("=========================MENU============================");
             System.out.println(">>1. mua hàng                                            ");
             System.out.println(">>2. xem lịch sử mua hàng                                ");
-            System.out.println(">>3. theo dõi tiến trình hàng hóa                        ");
+            System.out.println(">>3. theo dõi - xác nhận hàng hóa                        ");
             System.out.println(">>4. Tra cứu hàng hóa                                    ");
             System.out.println(">>5. Đăng xuất                                           ");
             System.out.println(">>6. Đổi mật khẩu                                        ");
