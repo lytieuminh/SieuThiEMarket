@@ -5,8 +5,6 @@ public class Custumer extends Account {
     private static StoredFiles custumers = new StoredFiles("custumer.json");
     // attributes
     private String address;
-    private String type;
-    private String pHistory;
 
     // getter setter
     public String getAddress() {
@@ -26,8 +24,7 @@ public class Custumer extends Account {
     public Custumer(String userName, Integer password, String tel, String role, String address) {
         super(userName, password, tel, role);
         this.address = address;
-        this.type = "Custumer";
-        this.pHistory = null;
+    
     }
     // methods
 
