@@ -1,1 +1,9 @@
-[{"un":"user","ps":123,"tel":"0123456789","role":"NV","address":"n/a"}]
+[
+    {
+        "un": "admin",
+        "ps": 123,
+        "tel": "0969696969",
+        "role": "NV",
+        "address": "n/a"
+    }
+]

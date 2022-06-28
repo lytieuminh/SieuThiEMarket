@@ -12,6 +12,7 @@ public class CreateAccountController {
     private Custumer customer;
     private Employee employee;
 
+    private CustumerController custumerController = new CustumerController(customer);
 
     // getter setter
     public Custumer getCustomer() {
@@ -35,6 +36,7 @@ public class CreateAccountController {
         if (!(boolean) listCheck.get(0)) {
             System.out.println(listCheck.get(1)); // print message
         } else {
+            custumerController.createNewCustumer(username, address);
             Account.getAccount().update(username, password, tel, role, address);
             Account.getAccount().write();
             System.out.println(listCheck.get(1));
